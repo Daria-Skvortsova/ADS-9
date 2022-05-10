@@ -2,14 +2,14 @@
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 #pragma once
+#pragma once
 template<typename T>
-class BST
-{
-private:
+class BST {
+ private:
   struct Node {
     T value;
-    int count=0;
-    Node* left=nullptr;
+    int count = 0;
+    Node* left = nullptr;
     Node* right = nullptr;;
   };
   Node* root;
@@ -23,10 +23,10 @@ private:
       root->left = addNode(root->left, val);
     } else if (root->value > val) {
       root->right = addNode(root->right, val);
-    } else 
+    } else {
       root->count++;
+    }
       return root;
-    
   }
   int searchNode(Node* root, const T& val) {
     if (root == nullptr) {
@@ -35,7 +35,7 @@ private:
       return root->count;
     } else if (root->value < val) {
       return searchNode(root->left, val);
-    } else if (root->value > val) {
+    } else {
       return searchNode(root->right, val);
     }
   }
@@ -43,17 +43,19 @@ private:
     int l = 0, r = 0;
     if (root == nullptr) {
       return 0;
-    } else
+    } else {
       l = depth_p(root->left);
-    r = depth_p(root->right);
+      r = depth_p(root->right);
+    }
     if (r > l) {
       return ++r;
-    } else
+    } else {
       return ++l;
+    }
   }
 
-public:
-  BST() :root(nullptr) {};
+ public:
+  BST() :root(nullptr) {}
   void Add(const T& val) {
     root = addNode(root, val);
   }
